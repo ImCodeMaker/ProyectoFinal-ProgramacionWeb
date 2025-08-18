@@ -1,0 +1,113 @@
+/* Botón principal de creación */
+.create-btn {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.create-btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: #fff;
+}
+
+/* Mejor distribución general */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 15px;
+  flex: 2;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.nav-btn.active {
+  color: #007bff;
+  border-color: #007bff;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-greeting {
+  color: #ccc;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  
+  .header-nav {
+    gap: 10px;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .user-greeting {
+    display: none;
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+
+  .create-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
