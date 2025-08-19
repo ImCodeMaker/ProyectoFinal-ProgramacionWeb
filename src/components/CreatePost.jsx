@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { db, storage } from '../firebase';
+import { db } from '../firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 function CreatePost({ currentUser, onPostCreated }) {
-  const [content, setContent] = useState('');
-  const [image, setImage] = useState(null);
+  const [content, setContent] = useState('')
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -19,25 +17,17 @@ function CreatePost({ currentUser, onPostCreated }) {
     if (!content.trim()) return alert('Escribe algo para publicar.');
 
     setLoading(true);
-    let imageUrl = '';
 
     try {
-      if (image) {
-        const imageRef = ref(storage, `posts/${Date.now()}_${image.name}`);
-        await uploadBytes(imageRef, image);
-        imageUrl = await getDownloadURL(imageRef);
-      }
 
       await addDoc(collection(db, 'posts'), {
         content: content.trim(),
-        imageUrl,
         authorId: currentUser.uid,
         authorName: currentUser.displayName || 'Anonymous',
         createdAt: serverTimestamp()
       });
 
       setContent('');
-      setImage(null);
       alert('Post publicado!');
       if (onPostCreated) onPostCreated();
     } catch (error) {
@@ -68,18 +58,6 @@ function CreatePost({ currentUser, onPostCreated }) {
           <small style={{ color: '#888', fontSize: '12px' }}>
             {content.length}/500 characters
           </small>
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="image" className="form-label">
-            Optional Image
-          </label>
-          <input 
-            type="file" 
-            id="image" 
-            accept="image/*" 
-            onChange={(e) => setImage(e.target.files[0])} 
-          />
         </div>
 
         <button 

@@ -4,6 +4,8 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { getStorage } from 'firebase/storage';
 
+
+//Esto lo puse hard coded, para que pueda probar la app.
 const firebaseConfig = {
   apiKey: "AIzaSyCEbiAut7B9F8LqvUcsnNXKp_fUtQodxqI",
   authDomain: "proyectofinal-d4198.firebaseapp.com",
